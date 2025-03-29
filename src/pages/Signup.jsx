@@ -12,11 +12,14 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", {
-        name,
-        email,
-        password,
-      });
+      await axios.post(
+        "https://taskmanagementbackend-4ohq.onrender.com/api/auth/signup",
+        {
+          name,
+          email,
+          password,
+        }
+      );
       navigate("/login");
     } catch (error) {
       console.error("Signup failed", error.response?.data?.message);

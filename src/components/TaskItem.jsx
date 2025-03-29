@@ -14,7 +14,7 @@ const TaskItem = ({ task }) => {
   const toggleStatus = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${task._id}`,
+        `https://taskmanagementbackend-4ohq.onrender.com/api/tasks/${task._id}`,
         { status: task.status === "Pending" ? "Completed" : "Pending" },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -26,9 +26,12 @@ const TaskItem = ({ task }) => {
 
   const deleteTask = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${task._id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://taskmanagementbackend-4ohq.onrender.com/api/tasks/${task._id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       fetchTasks();
     } catch (error) {
       console.error("Failed to delete task", error.response?.data?.message);
@@ -38,7 +41,7 @@ const TaskItem = ({ task }) => {
   const updateTask = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${task._id}`,
+        `https://taskmanagementbackend-4ohq.onrender.com/api/tasks/${task._id}`,
         { title, description },
         { headers: { Authorization: `Bearer ${token}` } }
       );

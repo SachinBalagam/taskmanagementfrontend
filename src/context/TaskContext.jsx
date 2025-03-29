@@ -9,11 +9,14 @@ export const TaskProvider = ({ children }) => {
   const fetchTasks = async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.get("http://localhost:5000/api/tasks", {
-        headers: {
-          Authorization: `Bearer ${token}`, // Send the token in the header
-        },
-      });
+      const response = await axios.get(
+        "https://taskmanagementbackend-4ohq.onrender.com/api/tasks",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Send the token in the header
+          },
+        }
+      );
       setTasks(response.data);
     } catch (error) {
       console.error("Failed to fetch tasks", error.response?.data?.message);
